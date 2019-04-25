@@ -1,5 +1,5 @@
 /*flowers(Woman,Flower,Color,Place,Day)*/
-/*this is a solution for flower power problem (you can see on http://ww38.brainangle.com/brainteasers/23826/flower-power.html)*/
+/*this is a solution for flower power problem (you can see on https://www.braingle.com/brainteasers/23826/flower-power.html)*/
 
 has(X,F) :- F=flowers(X,_,_,_,_).
 has(X,F) :- F=flowers(_,X,_,_,_).
