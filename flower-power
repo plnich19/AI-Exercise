@@ -1,0 +1,46 @@
+/*flowers(Woman,Flower,Color,Place,Day)*/
+
+has(X,F) :- F=flowers(X,_,_,_,_).
+has(X,F) :- F=flowers(_,X,_,_,_).
+has(X,F) :- F=flowers(_,_,X,_,_).
+has(X,F) :- F=flowers(_,_,_,X,_).
+has(X,F) :- F=flowers(_,_,_,_,X).
+
+order(A,B,C,X) :- X=flowers(A,B,C,_,_).
+order(A,B,C,X) :- X=flowers(A,B,_,C,_).
+order(A,B,C,X) :- X=flowers(A,_,B,C,_).
+order(A,B,C,X) :- X=flowers(A,B,_,_,C).
+order(A,B,C,X) :- X=flowers(A,_,B,_,C).
+order(A,B,C,X) :- X=flowers(A,_,_,B,C).
+order(A,B,C,X) :- X=flowers(_,A,B,C,_).
+order(A,B,C,X) :- X=flowers(_,A,B,_,C).
+order(A,B,C,X) :- X=flowers(_,A,_,B,C).
+order(A,B,C,X) :- X=flowers(_,_,A,B,C).
+
+solve(F) :-
+F = flowers(A,B,C,D,E),
+A = f(_,tulips,yellow,_,monday),
+B = f(_,_,_,office,tuesday),
+C = f(_,_,purple,_,wednesday),
+D = f(_,roses,_,park,thursday),
+E = f(julia,_,white,_,friday),
+
+(
+    has(f(bethany,_,_,backyark,_),F);
+    has(f(_,_,_,backyark,_),F) -> has(f(bethany,_,_,park,_),F)
+),
+
+(
+    (C = f(_,_,_,wedding,_); E = f(_,_,_,wedding,_)),
+    (C = f(_,_,_,birthday,_); E = f(_,_,_,birthday,_))
+),
+
+order(f(rachel,_,_,_,_),f(amy,_,_,_,_),f(kristen,_,_,_,_),F),
+
+has(f(rachel,_,peach,office,_),F),
+
+C = f(_,daisies,purple,_,wednesday),
+
+order(f(_,carnations,_,_,_),f(_,_,pink,_,_),f(_,lilies,_,_,_),F),
+
+order(f(_,_,_,office,_),f(_,_,_,birthday,_),f(_,_,_,wedding,_),F).
